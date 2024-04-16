@@ -26,7 +26,12 @@ jobs:
         run: npm run build
 
       - name: List dist files
-        run: ls
+        run: ls && cd dist && cd carlos-pipeline
+
+      - name: Instalar AWS
+        run: sudo apt install awscli && aws --version
+
+
 
   # deploy:
   #   needs: build
