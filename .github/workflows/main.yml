@@ -28,8 +28,12 @@ jobs:
       - name: List dist files
         run: ls && cd dist && cd carlos-pipeline
 
-      - name: Instalar AWS
-        run: sudo apt install awscli && aws --version
+      - name: Borrar archivos del bucket de S3
+        run: aws s3 rm s3://carlos-pipeline --recursive
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 
 
 
